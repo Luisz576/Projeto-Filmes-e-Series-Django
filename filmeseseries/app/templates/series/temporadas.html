@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Index</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    </head>
+    <body class="text-bg-secondary">
+        <header class="navbar bg-primary">
+            <nav class="container navbar-expand-lg navbar-dark">
+                <a class="navbar-brand" href="/">
+                    <h1>Filmes & Séries</h1>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="dropdown">
+                            <button class="btn dropdown-toggle" type="button" id="dropdown-pessoas" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Pessoas
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdown-pessoas">
+                                <a class="dropdown-item" href="/atores/">Atores</a>
+                                <a class="dropdown-item" href="/diretores/">Diretores</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="/filmes/">Filmes</a>
+                        </li>
+                        <li class="dropdown">
+                            <button class="btn dropdown-toggle" type="button" id="dropdown-series" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Series
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdown-series">
+                                <a class="dropdown-item" href="/series/">Series</a>
+                                <a class="dropdown-item" href="/episodios/">Episodios</a>
+                                <a class="dropdown-item" href="/temporadas/">Temporadas</a>
+                            </div>
+                        </li>
+                        <li class="dropdown">
+                            <button class="btn dropdown-toggle" type="button" id="dropdown-informacao" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Informacao
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdown-pessoas">
+                                <a class="dropdown-item" href="/continentes/">Continentes</a>
+                                <a class="dropdown-item" href="/paises/">Paises</a>
+                                <a class="dropdown-item" href="/generos/">Gêneros</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="/admin/">Administração</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <main>
+            <div class="container mt-5">
+                <h3 class="mb-4">Tabela de Temporadas</h3>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Episódios</th>
+                        </tr>
+                    </thead>
+                    {% for temporada in temporadas %}
+                        <tbody>
+                            <td>{{temporada.nome}}</td>
+                            <td>
+                                {% for episodio in temporada.episodios.all %}
+                                    {{episodio}}{% if not forloop.last %}, {% endif %}
+                                {% endfor %}
+                            </td>
+                        </tbody>
+                   {% endfor %}
+                </table>
+            </div>
+        </main>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </body>
+</html>
